@@ -1,7 +1,7 @@
 /* Js Application */
 
 //Initialize Array
-var chores = ['Grenier', 'Bob'];
+var chores = ['Make bed', 'Wash car'];
 var keyStroke = '';
 
 //Defining commands:
@@ -11,8 +11,8 @@ function sleep(ms) {
 }
 
 function create(chores) {
-  var add = prompt("What would you like to add?");
-  var type = prompt("Where do you want to add it ? (Start, End)");
+  var add = prompt("What would you like to add?"); // Ask user for chore
+  var type = prompt("Where do you want to add it ? (Start, End)"); // Ask for placment condition
   if (type === "End") {
     chores.push(add);  //Add to End
   } else if (type === "Start") {
@@ -54,9 +54,6 @@ function remove(chores) {
 
 //Application loop
 
-
-
-
 async function go() {
   while (true) {
     //Recieve usr command
@@ -79,11 +76,6 @@ async function go() {
   }
 }
 go()
-/*
-function input(keyStroke){
-  keyStroke = prompt("What would you like to do? \n(C)reate,\n(D)isplay,\n(E)dit,\n(R)emove,\n(Q)uit.");
-  return keyStroke;
-}
-*/
 
+// Not super sure if I have to explain the async function, but here's the video I watched about it: https://youtu.be/8aGhZQkoFbQ
 

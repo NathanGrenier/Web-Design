@@ -1,0 +1,178 @@
+<html>
+
+<head>
+
+	<title>DOM Assignment 1</title>
+
+
+	<style>
+		/* You'll want to create some style rules for
+      your <button> tags here. Optionally some font
+      size rules for the <body> as well */
+
+		body {
+      font-size: 14px;
+		}
+
+		button:hover {
+		  background-color: beige;
+		}
+
+		button {
+      cursor: pointer;
+		}
+	</style>
+
+
+	<script type="text/javascript" defer>
+      function bigger_font() {
+        paras = document.getElementsByTagName("p");
+        paras.style.fontSize = "20px";
+        
+        
+        
+        /* Step 1: Assign all <p> tags to a variable
+           Step 2: That variable acts like an array.
+           Use a FOR loop to cycle through it and change
+           each index location to a larger font. */
+        
+        var bigPara = document.getElementsByTagName("p");
+        
+         
+      }
+      
+      
+      function smaller_font() {
+        /* Same idea, only text gets smaller! */
+        
+        var smallPara = document.getElementsByTagName("p");
+
+
+      }
+      
+      
+      function new_background() {
+        /* Assign the <body> tag to a variable, and then 
+        change it's background color. REMEMBER - even though 
+        there's only one <body> tag, it's STILL going to be
+        treated as an ARRAY, using only index spot 0. */
+        
+  
+      }
+      
+      
+      function resetPage() {
+        /* Much like your bigger/smaller font functions up
+        above, you'll want to cycle through your paragraphs
+        and revert the size back to your starting size, as 
+        well as revert your background color to normal. */
+        
+        
+      }  
+
+      
+      /* THE SLIGHTLY TOUGHER - You'll need these functions
+      to make the page more user-customizable */
+      
+      function getUserInput() {  
+        /* Part 1: You need to ask the user for a background color, 
+        font color, and font family. Make it 3 separate questions,
+        and assign the answers to 3 variables.
+        
+        Then, you'll need to access the <body> tag, and 
+        change the style rules for those 3 characteristics.
+        Remember what I said about the <body> tag up above 
+        and how you have to access it in the DOM. */
+        
+        
+      }
+      
+      
+      function writeNewParas() {
+        /* Part 2 - we're going to do this together */
+        
+        /* First, we assign the entire form to a variable so we can 
+           access it. */
+        var formInfo = document.getElementById("userText");
+        
+        /* Then we grab the first textbox's content and assign it to 
+           a variable of its own. */
+        var userText1 = formInfo.elements.para1.value
+        
+        /* We also need the next two textboxes. You handle that part 
+           right below this comment. */
+        
+        
+        /* Lastly, we need to change the text that's on screen now.
+           So first, we grab all the <p> tags, which will be stored
+           as...you know something - you should already know. :) Then, 
+           you change each paragraph by assigning it the new variables
+           above. 
+           
+           Enter the rest of the code right below this line. */
+
+        
+      }
+
+	</script>
+
+</head>
+
+
+<!-- You need to add something to this <body> tag if you want that
+       getUserInput function up above to run on page load. -->
+
+<body>
+
+	<!-- Here are your buttons. You'll need to add an
+    attribute to each one so that when it's clicked,
+    it'll call the appropriate function from up above. -->
+	<button onclick="bigger_font()">TEXT +</button>
+	<button onclick="">TEXT -</button>
+	<button onclick="">COLOR!</button>
+	<button onclick="">RESET</button>
+	<button onclick="window.location.reload()">START OVER</button>
+
+	<p id="first" class="regular">
+		The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so
+		that programs can change the document structure, style, and content. The DOM represents the document as nodes
+		and objects. That way, programming languages can connect to the page.
+	</p>
+
+	<p id="second" class="regular">
+		A Web page is a document. This document can be either displayed in the browser window or as the HTML source. But
+		it is the same document in both cases. The Document Object Model (DOM) represents that same document so it can
+		be manipulated. The DOM is an object-oriented representation of the web page, which can be modified with a
+		scripting language such as JavaScript.
+	</p>
+
+	<p id="third" class="regular">
+		The DOM is not a programming language, but without it, the JavaScript language wouldn't have any model or notion
+		of web pages, HTML documents, XML documents, and their component parts (e.g. elements). Every element in a
+		documentâ€”the document as a whole, the head, tables within the document, table headers, text within the table
+		cellsâ€”is part of the document object model for that document, so they can all be accessed and manipulated
+		using the DOM and a scripting language like JavaScript.
+	</p>
+
+	<hr width="90%" align="center" style="margin: 40px;">
+
+	<form id="userText" action="javascript:writeNewParas()">
+
+		This text is BOOOOORING! I want to write something new!<br><br>
+
+		<label for="para1">Paragraph 1</label>
+		<input type="text" id="para1" size="40">
+		<br><br>
+		<label for="para2">Paragraph 2</label>
+		<input type="text" id="para2" size="40">
+		<br><br>
+		<label for="para3">Paragraph 3</label>
+		<input type="text" id="para3" size="40">
+		<br><br>
+		<input type="submit" id="searchbutton" value="Change Text" />
+
+    </form>
+
+</body>
+
+</html>

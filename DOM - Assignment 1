@@ -96,16 +96,25 @@
         // Get all paragraphs
         var para = document.getElementsByTagName("p");
         
+        // Get paraghraph's content
+        var paraText1 = document.getElementById("para1").value;
+        var paraText2 = document.getElementById("para2").value;
+        var paraText3 = document.getElementById("para3").value;
+        
+        // Put values in an array
+        var paraTextValue = [paraText1, paraText2, paraText3];
+        
         // Get all body elements
         var bodies = document.getElementsByTagName("body");
         
         // Revert all changes to variable values
         fontSize = 14;
         
-         //Revert paras' font size to 12px and font color to black
+         //Revert paras' font size to 12px, font color to black and text to original
          for (let i = 0; i < para.length; i++){
         		para[i].style.fontSize = fontSize + "px";
             para[i].style.color = "black";
+            para[i].innerText = paraTextValue[i];
           }
       
          // Revert background color to white 
@@ -146,32 +155,42 @@
       
       
       function writeNewParas() {
-        /* Part 2 - we're going to do this together */
-        
-        /* First, we assign the entire form to a variable so we can 
-           access it. */
+      	// Grab from
         var formInfo = document.getElementById("userText");
         
-        /* Then we grab the first textbox's content and assign it to 
-           a variable of its own. */
-        var userText1 = formInfo.elements.para1.value
+        // Grab all 3 text boxes
+        var userText1 = formInfo.elements.para1.value;
+        var userText2 = formInfo.elements.para2.value;
+        var userText3 = formInfo.elements.para3.value;
         
-        /* We also need the next two textboxes. You handle that part 
-           right below this comment. */
-        
-        
-        /* Lastly, we need to change the text that's on screen now.
-           So first, we grab all the <p> tags, which will be stored
-           as...you know something - you should already know. :) Then, 
-           you change each paragraph by assigning it the new variables
-           above. 
+        // Create array with all imputs
+        var userTexts = [userText1, userText2, userText3];
+  			
+        // Get all paragrhaps
+				var allParas = document.getElementsByTagName("p");
            
-           Enter the rest of the code right below this line. */
-
-        
+        // Change text to what was imputed into the form
+        for (i = 0; i < allParas.length; i++){
+        	allParas[i].innerText = userTexts[i];
+         }
       }
 
-	</script>
+
+			function getParaValues(){
+      	// Get paraghraph's content
+        var paraText1 = document.getElementById("para1").value;
+        var paraText2 = document.getElementById("para2").value;
+        var paraText3 = document.getElementById("para3").value;
+        
+        // Put values in an array
+        return var paraTextValue = [paraText1, paraText2, paraText3];
+      }
+      
+      function accessParaValues(paraTextValue){
+      	return paraTextValue
+      }
+	
+  </script>
 
 </head>
 
@@ -179,12 +198,12 @@
 <!-- You need to add something to this <body> tag if you want that
        getUserInput function up above to run on page load. -->
 
-<body onload="getUserInput()">
+<body onload="getUserInput()" var paraTextValues = "getParaValues()">
 
 	<!-- Here are your buttons. You'll need to add an
     attribute to each one so that when it's clicked,
     it'll call the appropriate function from up above. -->
-	<button onclick = bigger_font()>TEXT +</button>
+	<button onclick="bigger_font()">TEXT +</button>
 	<button onclick="smaller_font()">TEXT -</button>
 	<button onclick="new_background()">COLOR!</button>
 	<button onclick="resetPage()">RESET</button>

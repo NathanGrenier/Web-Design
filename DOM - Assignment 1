@@ -102,9 +102,10 @@
         // Revert all changes to variable values
         fontSize = 14;
         
-         //Revert paras' font size to 12px
+         //Revert paras' font size to 12px and font color to black
          for (let i = 0; i < para.length; i++){
         		para[i].style.fontSize = fontSize + "px";
+            para[i].style.color = "black";
           }
       
          // Revert background color to white 
@@ -118,18 +119,27 @@
       to make the page more user-customizable */
       
       function getUserInput() {  
-        /* Part 1: You need to ask the user for a background color, 
-        font color, and font family. Make it 3 separate questions,
-        and assign the answers to 3 variables.
-        
-        Then, you'll need to access the <body> tag, and 
-        change the style rules for those 3 characteristics.
-        Remember what I said about the <body> tag up above 
-        and how you have to access it in the DOM. */
         // Ask user for background color, font color and font family
-        var backgroundColor = prompt("What background color whould you like?");
-        var fontColor = prompt("What font color whould you like?");
-        var fontFamily = prompt("What font family whould you like?");
+        var userBackgroundColor = prompt("What background color whould you like?");
+        var userFontColor = prompt("What font color whould you like?");
+        var userFontFamily = prompt("What font family whould you like?");
+       
+        // Get all body elements
+        var Body = document.getElementsByTagName("body");
+        
+        // Get all paragrhaps
+        var Para = document.getElementsByTagName("p");
+       	
+        // Change background to user imput
+        for (let i = 0; i < Body.length; i++){
+        	Body[i].style.backgroundColor = userBackgroundColor;
+        }
+        
+        // Change font color and font family to user imput
+        for (let i = 0; i < Para.length; i++){
+        	Para[i].style.color = userFontColor;
+          Para[i].style.fontFamily = userFontFamily;
+        }
         
         
       }

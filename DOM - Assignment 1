@@ -20,54 +20,97 @@
 
 		button {
       cursor: pointer;
+      border-radius:17px;
+	    border:1px solid #1f2f47;
+	    display:inline-block;
+      padding:9px 17px;
+      background-color:#2e466e;
+      color:#ffffff;
 		}
-	</style>
+	
+    button:hover {
+	    background-color:#415989;
+}
+  </style>
 
 
 	<script type="text/javascript" defer>
+      // init font size of paras
+      var fontSize = 14;
+      
+      // Max font size
+      var maxFontSize = 20;
+      
       function bigger_font() {
-        paras = document.getElementsByTagName("p");
-        paras.style.fontSize = "20px";
-        
-        
-        
-        /* Step 1: Assign all <p> tags to a variable
-           Step 2: That variable acts like an array.
-           Use a FOR loop to cycle through it and change
-           each index location to a larger font. */
-        
+        // Get all paras into an array
         var bigPara = document.getElementsByTagName("p");
         
-         
+				// Increase font size by 2px
+        fontSize = fontSize + 2;
+        
+        // Make all paras larger by 2px
+        for (let i = 0; i < bigPara.length; i++){
+        	if (fontSize < maxFontSize){
+        		bigPara[i].style.fontSize = fontSize + "px";          
+          } else {
+          	// Make sure that if button is spamed, value of fontSize isn't bloated. Remove what was added
+            fontSize = fontSize - 2;
+          }
+        } 
       }
       
       
       function smaller_font() {
-        /* Same idea, only text gets smaller! */
-        
+        // Get all paras into an array
         var smallPara = document.getElementsByTagName("p");
+     
+     		// Min font size
+      	var minFontSize = 8;
 
+				// Decrease font size by 2px
+        fontSize = fontSize - 2;
 
+        for (let i = 0; i < smallPara.length; i++){
+        	if (fontSize > minFontSize){
+        		smallPara[i].style.fontSize = fontSize + "px";
+          } else {
+          	// Make sure that if button is spamed, value of fontSize isn't bloated. Add was what removed
+            fontSize = fontSize + 2;
+          }
+        } 
       }
       
       
       function new_background() {
-        /* Assign the <body> tag to a variable, and then 
-        change it's background color. REMEMBER - even though 
-        there's only one <body> tag, it's STILL going to be
-        treated as an ARRAY, using only index spot 0. */
+				// Get all body elements
+        var background = document.getElementsByTagName("body");
         
-  
+        for (let i = 0; i < background.length; i++){
+        	// Change background color to light blue
+          background[i].style.backgroundColor = "#add8e6";
+        }
       }
       
       
       function resetPage() {
-        /* Much like your bigger/smaller font functions up
-        above, you'll want to cycle through your paragraphs
-        and revert the size back to your starting size, as 
-        well as revert your background color to normal. */
+        // Get all paragraphs
+        var para = document.getElementsByTagName("p");
         
+        // Get all body elements
+        var bodies = document.getElementsByTagName("body");
         
+        // Revert all changes to variable values
+        fontSize = 14;
+        
+         //Revert paras' font size to 12px
+         for (let i = 0; i < para.length; i++){
+        		para[i].style.fontSize = fontSize + "px";
+          }
+      
+         // Revert background color to white 
+         for (let i = 0; i < bodies.length; i++){
+        		bodies[i].style.backgroundColor = "#ffffff";
+          }
       }  
 
       
@@ -83,6 +126,10 @@
         change the style rules for those 3 characteristics.
         Remember what I said about the <body> tag up above 
         and how you have to access it in the DOM. */
+        // Ask user for background color, font color and font family
+        var backgroundColor = prompt("What background color whould you like?");
+        var fontColor = prompt("What font color whould you like?");
+        var fontFamily = prompt("What font family whould you like?");
         
         
       }
@@ -122,15 +169,15 @@
 <!-- You need to add something to this <body> tag if you want that
        getUserInput function up above to run on page load. -->
 
-<body>
+<body onload="getUserInput()">
 
 	<!-- Here are your buttons. You'll need to add an
     attribute to each one so that when it's clicked,
     it'll call the appropriate function from up above. -->
-	<button onclick="bigger_font()">TEXT +</button>
-	<button onclick="">TEXT -</button>
-	<button onclick="">COLOR!</button>
-	<button onclick="">RESET</button>
+	<button onclick = bigger_font()>TEXT +</button>
+	<button onclick="smaller_font()">TEXT -</button>
+	<button onclick="new_background()">COLOR!</button>
+	<button onclick="resetPage()">RESET</button>
 	<button onclick="window.location.reload()">START OVER</button>
 
 	<p id="first" class="regular">

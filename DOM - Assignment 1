@@ -6,9 +6,6 @@
 
 
 	<style>
-		/* You'll want to create some style rules for
-      your <button> tags here. Optionally some font
-      size rules for the <body> as well */
 
 		body {
       font-size: 14px;
@@ -19,7 +16,7 @@
 		}
 
 		button {
-      cursor: pointer;
+   		cursor: pointer;
       border-radius:17px;
 	    border:1px solid #1f2f47;
 	    display:inline-block;
@@ -31,28 +28,34 @@
     button:hover {
 	    background-color:#415989;
 }
+
+      li {
+        margin-bottom: 10px;
+      }
+			
   </style>
 
 
 	<script type="text/javascript" defer>
-      // init font size of paras
-      var fontSize = 14;
+  // init font size of paras
+  var fontSize = 14;
       
-      // Max font size
-      var maxFontSize = 20;
-      
-      function bigger_font() {
-        // Get all paras into an array
-        var bigPara = document.getElementsByTagName("p");
+	// Max font size
+	var maxFontSize = 20;
+            
+	
+	function bigger_font() {
+		// Get all paras into an array
+		var bigPara = document.getElementsByTagName("p");
         
-				// Increase font size by 2px
-        fontSize = fontSize + 2;
+		// Increase font size by 2px
+		fontSize = fontSize + 2;
         
-        // Make all paras larger by 2px
-        for (let i = 0; i < bigPara.length; i++){
-        	if (fontSize < maxFontSize){
-        		bigPara[i].style.fontSize = fontSize + "px";          
-          } else {
+		// Make all paras larger by 2px
+		for (let i = 0; i < bigPara.length; i++){
+    	if (fontSize < maxFontSize){
+      	bigPara[i].style.fontSize = fontSize + "px";
+       } else {
           	// Make sure that if button is spamed, value of fontSize isn't bloated. Remove what was added
             fontSize = fontSize - 2;
           }
@@ -96,14 +99,6 @@
         // Get all paragraphs
         var para = document.getElementsByTagName("p");
         
-        // Get paraghraph's content
-        var paraText1 = document.getElementById("para1").value;
-        var paraText2 = document.getElementById("para2").value;
-        var paraText3 = document.getElementById("para3").value;
-        
-        // Put values in an array
-        var paraTextValue = [paraText1, paraText2, paraText3];
-        
         // Get all body elements
         var bodies = document.getElementsByTagName("body");
         
@@ -112,12 +107,11 @@
         
          //Revert paras' font size to 12px, font color to black and text to original
          for (let i = 0; i < para.length; i++){
-        		para[i].style.fontSize = fontSize + "px";
+						para[i].style.fontSize = fontSize + "px";
             para[i].style.color = "black";
-            para[i].innerText = paraTextValue[i];
           }
-      
-         // Revert background color to white 
+				 
+				 // Revert background color to white 
          for (let i = 0; i < bodies.length; i++){
         		bodies[i].style.backgroundColor = "#ffffff";
           }
@@ -149,8 +143,6 @@
         	Para[i].style.color = userFontColor;
           Para[i].style.fontFamily = userFontFamily;
         }
-        
-        
       }
       
       
@@ -174,35 +166,31 @@
         	allParas[i].innerText = userTexts[i];
          }
       }
-
-
-			function getParaValues(){
-      	// Get paraghraph's content
-        var paraText1 = document.getElementById("para1").value;
-        var paraText2 = document.getElementById("para2").value;
-        var paraText3 = document.getElementById("para3").value;
-        
-        // Put values in an array
-        return var paraTextValue = [paraText1, paraText2, paraText3];
-      }
       
-      function accessParaValues(paraTextValue){
-      	return paraTextValue
-      }
+	/* Bonus Section */
 	
+			function addItem() {
+				// Grab item input
+				var item = document.getElementById("item").value;
+				
+				// Create new li and text element
+				var li = document.createElement("LI");
+				var text = document.createTextNode(item);
+				
+				// Append text node to list item
+				li.appendChild(text);
+				
+				// Append list element to unordered list
+				document.getElementById("shoppingList").appendChild(li);
+			}
+
   </script>
 
 </head>
 
 
-<!-- You need to add something to this <body> tag if you want that
-       getUserInput function up above to run on page load. -->
+<body onload="getUserInput()">
 
-<body onload="getUserInput()" var paraTextValues = "getParaValues()">
-
-	<!-- Here are your buttons. You'll need to add an
-    attribute to each one so that when it's clicked,
-    it'll call the appropriate function from up above. -->
 	<button onclick="bigger_font()">TEXT +</button>
 	<button onclick="smaller_font()">TEXT -</button>
 	<button onclick="new_background()">COLOR!</button>
@@ -248,6 +236,23 @@
 		<input type="submit" id="searchbutton" value="Change Text" />
 
     </form>
+
+		
+    <!-- Bonus Section -->
+		
+		<h1>My shopping list</h1>
+
+    <form id="newItem" action="javascript:addItem()">
+      <label for="item">Enter a new item:</label>
+      <input type="text" id="item" size="20">
+      <input type="submit" id="appendItem" value="Add Item"/>
+    </form>
+
+
+    <ul id="shoppingList">
+			<li>Milk</li>
+    </ul>
+
 
 </body>
 
